@@ -12,7 +12,6 @@ const CATEGORIES = [
   { id: 'health', label: 'Health' }
 ];
 
-
 const LoadingScreen = () => (
   <div className="loading">
     <img 
@@ -33,7 +32,8 @@ function App() {
     try {
       setLoading(true);
       console.log('Fetching news for category:', category);
-      const response = await fetch(`http://localhost:5000/api/news?category=${category}`);
+      // Update the fetch URL to use the Vercel deployed backend
+      const response = await fetch(`https://snap-news-server.vercel.app/api/news?category=${category}`);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
